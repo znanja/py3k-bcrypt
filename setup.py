@@ -21,9 +21,9 @@ try:
 	from setuptools import setup, Extension
 except ImportError:
 	from distutils.core import setup, Extension
- 
-VERSION = "0.3"
- 
+
+VERSION = "0.3-znanja1"
+
 if __name__ == '__main__':
 	bcrypt = Extension('bcrypt._bcrypt',
 		sources = ['bcrypt/bcrypt_python.c', 'bcrypt/blowfish.c',
