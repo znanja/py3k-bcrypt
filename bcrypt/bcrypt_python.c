@@ -15,7 +15,6 @@
  */
 
 #include "Python.h"
-#include <inttypes.h>
 
 /* $Id: bcrypt_python.c,v 1.3 2009/10/01 13:09:52 djm Exp $ */
 

@@ -34,11 +34,7 @@
 #ifndef _PYBC_BLF_H_
 #define _PYBC_BLF_H_
 
-#if defined(_MSC_VER)
-typedef unsigned __int8		u_int8_t;
-typedef unsigned __int16	u_int16_t;
-typedef unsigned __int32	u_int32_t;
-#endif
+#include <inttypes.h>
 
 /* Schneier specifies a maximum key length of 56 bytes.
  * This ensures that every key bit affects every cipher
@@ -52,8 +48,8 @@ typedef unsigned __int32	u_int32_t;
 
 /* Blowfish context */
 typedef struct BlowfishContext {
-	u_int32_t S[4][256];	/* S-Boxes */
-	u_int32_t P[BLF_N + 2];	/* Subkeys */
+	uint32_t S[4][256];	/* S-Boxes */
+	uint32_t P[BLF_N + 2];	/* Subkeys */
 } pybc_blf_ctx;
 
 /* Raw access to customized Blowfish
@@ -63,15 +59,15 @@ typedef struct BlowfishContext {
  */
 
 void pybc_Blowfish_initstate(pybc_blf_ctx *);
-void pybc_Blowfish_expand0state(pybc_blf_ctx *, const u_int8_t *, u_int16_t);
-void pybc_Blowfish_expandstate(pybc_blf_ctx *, const u_int8_t *, u_int16_t,
-    const u_int8_t *, u_int16_t);
+void pybc_Blowfish_expand0state(pybc_blf_ctx *, const uint8_t *, uint16_t);
+void pybc_Blowfish_expandstate(pybc_blf_ctx *, const uint8_t *, uint16_t,
+    const uint8_t *, uint16_t);
 
 /* Standard Blowfish */
 
-void pybc_blf_enc(pybc_blf_ctx *, u_int32_t *, u_int16_t);
+void pybc_blf_enc(pybc_blf_ctx *, uint32_t *, uint16_t);
 
-/* Converts u_int8_t to u_int32_t */
-u_int32_t pybc_Blowfish_stream2word(const u_int8_t *, u_int16_t, u_int16_t *);
+/* Converts uint8_t to uint32_t */
+uint32_t pybc_Blowfish_stream2word(const uint8_t *, uint16_t, uint16_t *);
 
 #endif
