@@ -15,18 +15,13 @@
  */
 
 #include "Python.h"
-
-#if defined(_MSC_VER)
-typedef unsigned __int8		u_int8_t;
-typedef unsigned __int16	u_int16_t;
-typedef unsigned __int32	u_int32_t;
-#endif
+#include <inttypes.h>
 
 /* $Id: bcrypt_python.c,v 1.3 2009/10/01 13:09:52 djm Exp $ */
 
 /* Import */
 char *pybc_bcrypt(const char *, const char *);
-void encode_salt(char *, u_int8_t *, u_int16_t, u_int8_t);
+void encode_salt(char *, uint8_t *, uint16_t, uint8_t);
 
 PyDoc_STRVAR(bcrypt_encode_salt_doc,
 "encode_salt(csalt, log_rounds) -> encoded_salt\n\
